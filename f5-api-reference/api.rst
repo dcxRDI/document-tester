@@ -8,16 +8,17 @@ https://bpi.automation.api.rackspacecloud.com/2.0/{tenant\_id}/f5loadbalancers/{
 	:depth: 1
 	:local: 
 
-Load balancer details
----------------------
+Retrieve load balancer information
+----------------------------------
 
-Retrieve all details associated with specified load balancer.
+Retrieve load balancer information like the model number, OS version,
+CPU statistics, and so on.
 
 .. code:: javascript
 
     GET /
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -89,7 +90,7 @@ Retrieve all nodes that have been configured in the load balancer.
 
     GET /nodes
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -172,7 +173,7 @@ Retrieve statistics for all nodes that were added to the load balancer.
 
     GET /nodes/stats
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -215,13 +216,13 @@ Response:
 Retrieve node information by node ID
 ------------------------------------
 
-Returns information about the node associated with the node ID.
+Retrieves information about the node associated with the node ID.
 
 .. code:: javascript
 
     GET /nodes/{nodeId}
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -300,7 +301,7 @@ to complete this operation.
 
     DELETE /nodes/{nodeId}
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -327,7 +328,7 @@ for the device with the specified node ID.
 
     GET /nodes/{nodeId}/stats
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -367,16 +368,16 @@ Response:
         ]
     }
 
-Retrieve monitor rule for node
-------------------------------
+Retrieve monitor rules for node
+-------------------------------
 
-Retrieve information about the monitor rule applied to a specific node.
+Retrieve information about the monitor rules applied to a specific node.
 
 .. code:: javascript
 
     GET /nodes/{nodeId}/monitor-rule
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -438,7 +439,7 @@ Response:
 Update a monitor rule on node
 -----------------------------
 
-Update the monitor rule configured for a specified node.
+Update the monitor rule configured for the specified node.
 
 .. code:: javascript
 
@@ -483,7 +484,7 @@ Remove the monitor rule from the specified node.
 
     DELETE /nodes/{nodeId}/monitor-rule
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -518,7 +519,7 @@ balancer.
 
     GET /pools
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -563,14 +564,14 @@ Response:
 Retrieve pool statistics
 ------------------------
 
-Retrieve statistics for all pools associated have been created in a load
-balancer.
+Retrieve all stats associated to all Pools that have been created in the
+current load balancer.
 
 .. code:: javascript
 
     GET /pools/stats
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -630,14 +631,13 @@ Response:
 Retrieve a pool by ID
 ---------------------
 
-Retrieve information about a specified pool by pool ID. Use the retrieve
-pools operation to pool specified by a pool id.
+Retrieve information about a specified pool by pool ID.
 
 .. code:: javascript
 
     GET /pools/{poolId}
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -679,7 +679,7 @@ Response:
         ]
     }
 
-Update a Pool
+Update a pool
 -------------
 
 Update the configuration for a specified pool.
@@ -743,7 +743,7 @@ Remove a specified pool from the load balancer configuration.
 
     DELETE /pools/{poolId}
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -761,16 +761,16 @@ Response:
         }
     }
 
-Retrieve stats for a Pool
--------------------------
+Retrieve pool statistics
+------------------------
 
-Retrieve stats for a Pool specified by a Pool id.
+Retrieve pool statistics specified by a pool ID.
 
 .. code:: javascript
 
     GET /pools/{poolId}/stats
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -827,16 +827,16 @@ Response:
         ]
     }
 
-Retrieve monitor rule for a pool
---------------------------------
+Retrieve pool monitor rules
+---------------------------
 
-Retrieve a monitor rule associated with a specified pool.
+Retrieve monitor rules associated with the specified pool.
 
 .. code:: javascript
 
     GET /pools/{poolId}/monitor-rule
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -860,8 +860,7 @@ Response:
 Add a monitor rule to a pool
 ----------------------------
 
-Add a monitor rule to a specified pool. To find the names of the
-available monitors, submit a GET monitors request.
+Add a monitor rule to a specified pool.
 
 .. code:: javascript
 
@@ -895,11 +894,10 @@ Response:
       }
     }
 
-Update monitor rule for a pool
-------------------------------
+Update pool monitor rule
+------------------------
 
-Update the monitor rule applied to a specified pool. Use the retrieve
-monitors by pool ID operation to find the monitor rule name.
+Update the monitor rule for the specified pool.
 
 .. code:: javascript
 
@@ -933,8 +931,8 @@ Response:
         }
     }
 
-Remove monitor rule from a pool
--------------------------------
+Remove pool monitor rule
+------------------------
 
 Remove a monitor rule for the specified pool.
 
@@ -942,7 +940,7 @@ Remove a monitor rule for the specified pool.
 
     DELETE /pools/{poolId}/monitor-rule
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -960,16 +958,16 @@ Response:
         }
     }
 
-Retrieve pool members for a pool
---------------------------------
+Retrieve pool members
+---------------------
 
-Retrieve a list of members associated with a specific pool ID.
+Retrieve a list of members for the specified pool.
 
 .. code:: javascript
 
     GET /pools/{poolId}/members
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -1005,8 +1003,8 @@ Response:
       ]
     }
 
-Create a pool member in a pool
-------------------------------
+Create a pool member
+--------------------
 
 Create a pool member by adding an existing node to a specified pool.
 
@@ -1053,7 +1051,7 @@ configuration settings, availability, and monitoring status.
 
     GET /pools/{poolId}/members/stats
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -1108,17 +1106,17 @@ Response:
       ]
     }
 
-Retrieve statistics for a pool member
--------------------------------------
+Retrieve pool member statistics
+-------------------------------
 
-Retrieve configuration, monitor settings, and other data for a pool
-member.
+Retrieve configuration, monitor settings, and other data for the
+specified pool member.
 
 .. code:: javascript
 
     GET /pools/{poolId}/members/{memberId}
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -1192,16 +1190,16 @@ Response:
         }
     }
 
-Remove pool member from pool
-----------------------------
+Remove pool member
+------------------
 
-Remove a pool member by pool ID
+Remove the specified pool member from the current pool.
 
 .. code:: javascript
 
     DELETE /pools/{poolId}/members/{memberId}
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -1220,8 +1218,8 @@ Response:
         }
     }
 
-Retrieve pool member monitor rule
----------------------------------
+Retrieve pool member monitor rules
+----------------------------------
 
 Retrieves configuration settings for the monitor rule applied to a
 specified pool member.
@@ -1230,7 +1228,7 @@ specified pool member.
 
     GET /pools/{poolId}/members/{memberId}/monitor-rule
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -1286,11 +1284,11 @@ Response:
         }
     }
 
-Update monitor rule for pool member
------------------------------------
+Update pool member monitor rule
+-------------------------------
 
-Update the configuration settings for the monitor rule applied to a
-specified pool member.
+Update the configuration settings of the monitor rule for the specified
+pool member.
 
 .. code:: javascript
 
@@ -1325,17 +1323,16 @@ Response:
         }
     }
 
-Remove monitor rule from pool member
-------------------------------------
+Remove pool member monitor rule
+-------------------------------
 
-Remove the monitor rule applied to a specified pool member (memberId) in
-a specified pool (poolId).
+Remove the monitor rule for the specified pool member.
 
 .. code:: javascript
 
     DELETE /pools/{poolId}/members/{memberId}/monitor-rule
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -1354,8 +1351,8 @@ Response:
         }
     }
 
-Retrieve statistics for pool member
------------------------------------
+Retrieve pool member statistics
+-------------------------------
 
 Retrieve configuration, monitor settings, and other data for a pool
 member.
@@ -1364,7 +1361,7 @@ member.
 
     GET /pools/{poolId}/members/{memberId}/stats
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -1436,7 +1433,7 @@ balancer including configuration data and status information.
 
     GET /virtuals
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -1574,7 +1571,7 @@ the load balancer.
 
     GET /virtuals/stats
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -1792,7 +1789,7 @@ Retrieve information about the specified virtual server.
 
     GET /virtuals/{virtualId}
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -1927,7 +1924,7 @@ Remove a specified virtual server from the load balancer configuration.
 
     DELETE /virtuals/{virtualId}
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -1945,33 +1942,6 @@ Response:
         }
     }
 
-Retrieve Traffic Classes
-------------------------
-
-Retrieve Virtual's Traffic Classes
-
-.. code:: javascript
-
-    GET /virtuals/{virtualId}/traffic-classes
-
-*Resource does not require a body*
-
-Response:
-^^^^^^^^^
-
-.. code:: javascript
-
-
-    {
-        "data": [
-            {
-                "names": [
-                    "local-trafficClass"
-                ]
-            }
-        ]
-    }
-
 Retrieve persistent profiles for a virtual server
 -------------------------------------------------
 
@@ -1984,7 +1954,7 @@ throughout the life of a session or during subsequent sessions.
 
     GET /virtuals/{virtualId}/persists
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -2085,7 +2055,7 @@ server.
 
     DELETE /virtuals/{virtualId}/persists
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -2113,7 +2083,7 @@ load balancer.
 
     GET /virtuals/{virtualId}/stats
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -2322,34 +2292,6 @@ Response:
         ]
     }
 
-Retrieve A Virtual's Auth
--------------------------
-
-Retrieve a Virtual's auth specified by a Virtual id.
-
-.. code:: javascript
-
-    GET /virtuals/{virtualId}/auth
-
-*Resource does not require a body*
-
-Response:
-^^^^^^^^^
-
-.. code:: javascript
-
-
-    {
-        "data": [
-            {
-                "profileNames": [
-                    "secure-auth",
-                    "read-auth"
-                ]
-            }
-        ]
-    }
-
 Retrieve a virtual pool by virtual ID.
 --------------------------------------
 
@@ -2360,7 +2302,7 @@ virtual server.
 
     GET /virtuals/{virtualId}/pool
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -2392,7 +2334,7 @@ Retrieve monitors configured in the load balancer.
 
     GET /monitors
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -2477,13 +2419,13 @@ Response:
 Retrieve monitor by ID
 ----------------------
 
-Retrieve information about a specified monitor by monitor ID.
+Retrieve information about a specific monitor by monitor ID.
 
 .. code:: javascript
 
     GET /monitors/{monitorId}
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -2634,7 +2576,7 @@ Remove a specified monitor from the load balancer configuration.
 
     DELETE /monitors/{monitorId}
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -2668,7 +2610,7 @@ Retrieve all events.
 
     GET /events
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -2691,13 +2633,13 @@ Response:
 Retrieve event by event id
 --------------------------
 
-Retrieve event by event id
+Retrieve event information by event id
 
 .. code:: javascript
 
     GET /events/{eventId}
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
