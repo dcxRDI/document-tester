@@ -12,14 +12,14 @@ Retrieve device information
 ---------------------------
 
 Use the device ID operation to get complete information about the device
-with the specified ID including associated customer, usage statistics,
+with the specified ID including associated customers, usage statistics,
 and configuration details for nodes, virtual IPs, and high availability.
 
 .. code:: javascript
 
     GET /{device_id}
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -103,7 +103,7 @@ the specified ID.
 
     GET /{device_id}/ha
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -133,7 +133,7 @@ label, protocol, port, algorithm, persistence, admin\_state, comment*
 
     GET /{device_id}/vips
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -189,7 +189,20 @@ Response:
       ]
     }
 
-Add a Virtual IP
+Add a VirtualIP
+---------------
+
+Load balancers must have at least one virtual IP address that clients
+can use to balance traffic across nodes. You can use the manage virtual
+IPs operations to configure and manage the virtual IP addresses for the
+load balancer with the specified device ID.
+
+An IP can be passed into the add Virtual IP call as part of the request
+body, only if the IP exists within an existing virtual.
+
+*When adding a virtual IP, the following fields are required:
+account\_number, label, protocol, port, algorithm, persistence,
+admin\_state, comment*
 
 .. code:: javascript
 
@@ -241,13 +254,11 @@ configuration.
 If you don't know the ID for a specified virtual IP, use the retrieve
 virtual IPs operation to find it.
 
-*When deleting, these fields are required: account\_number, comment*
-
 .. code:: javascript
 
     GET /{device_id}/vips/{vip_id}
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -307,9 +318,6 @@ configuration.
 
 If you don't know the ID for a specified virtual IP, use the retrieve
 virtual IPs operation to find it.
-
-*The following fields are required when you delete a virtual IP,
-account\_number, comment*
 
 .. code:: javascript
 
@@ -403,7 +411,7 @@ IP.
 
     GET /{device_id}/vips/{vip_id}/nodes
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -423,7 +431,7 @@ Response:
       ]
     }
 
-Assign node to Virtual IP
+Assign node to virtual IP
 -------------------------
 
 Use the virtual IP node configuration operations to add or remove a
@@ -460,7 +468,7 @@ Response:
       "timestamp": "2015-04-01T10:05:01.55Z",
     }
 
-Remove node from Virtual IP configuration
+Remove node from virtual IP configuration
 -----------------------------------------
 
 Use the virtual IP node configuration operations to add or remove a
@@ -470,7 +478,7 @@ specified node from the virtual IP configuration.
 
     DELETE /{device_id}/vips/{vip_id}/nodes/{node_id}
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -487,7 +495,7 @@ Response:
       "timestamp": "2015-04-01T10:05:01.55Z",
     }
 
-Enable the Virtual IP
+Enable the virtual IP
 ---------------------
 
 Use the virtual IP configuration operations to enable or disable a
@@ -521,8 +529,8 @@ Response:
       "timestamp": "2015-04-01T10:05:01.55Z",
     }
 
-Deactivate the Virtual IP
--------------------------
+Disable the virtual IP
+----------------------
 
 Use the virtual IP configuration operations to enable or disable a
 virtual IP configured for a specified device.
@@ -556,12 +564,15 @@ Response:
     }
 
 Show Virtual IP statistics
+--------------------------
+
+retrieves usage data for the specifried virtual IP.
 
 .. code:: javascript
 
     GET /{device_id}/vips/{vip_id}/stats
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -581,7 +592,7 @@ Response:
         }
     }
 
-Nodes in a device for the given device id
+Nodes in a device for the given device ID
 -----------------------------------------
 
 A node is a back-end device providing a service on a specified IP and
@@ -593,15 +604,11 @@ for a specified device and to add a node.
 After a node has been defined, use the virtual IP nodes configuration
 operations to assign the node to one or more virtual IPs.
 
-*When adding a node to a device, these fields are rquired:
-account\_number, label, ip, port, admin\_state, health\_strategy,
-vendor\_extensions, comment*
-
 .. code:: javascript
 
     GET /{device_id}/nodes
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -684,16 +691,19 @@ Response:
       "timestamp": "2015-04-01T10:05:01.55Z",
     }
 
-Retrieve Node information
+Retrieve node information
 -------------------------
 
-Use the node operations to view, update, or remove a specified node.
+Retrieves information about the specified node.
+
+For example: stats, protocol, health\_strategy, address, runtime\_state,
+admin\_state, etc...
 
 .. code:: javascript
 
     GET /{device_id}/nodes/{node_id}
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -743,7 +753,9 @@ Response:
 Update node information
 -----------------------
 
-Use the node operations to view, update, or remove a specified node.
+Use this operation to update a specified node.
+
+*For this operation, an account\_number and a comment are required.*
 
 .. code:: javascript
 
@@ -780,10 +792,13 @@ Response:
       "timestamp": "2015-04-01T10:05:01.55Z",
     }
 
-Delete the Node
----------------
+Delete node from device configuration.
+--------------------------------------
 
-Delete node from the device configuration
+Use the node delete operation to remove the specified node from the
+device configuration.
+
+*For this operation, an account\_number is required.*
 
 .. code:: javascript
 
@@ -819,8 +834,7 @@ Enable a node
 Use the node status operations to enable or disable a specified node
 included in the device configuration.
 
-If you want to delete the node from the configuration file, use the
-delete node operation.
+*For this operation, an account\_number is required.*
 
 .. code:: javascript
 
@@ -856,8 +870,7 @@ Disable a node
 Use the node status operations to enable or disable a specified node
 included in the device configuration.
 
-If you want to delete the node from the configuration file, use the
-delete node operation.
+*For this operation, an account\_number is required.*
 
 .. code:: javascript
 
@@ -896,7 +909,7 @@ Retrieves usage data for a specified node ID.
 
     GET /{device_id}/nodes/{node_id}/stats
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -916,17 +929,17 @@ Response:
       }
     }
 
-List Events
+List events
 -----------
 
-Use the events operations to get information about requests to create or
-modify load balancer resources.
+Use this operation to retrieve a list of events for the specified device
+provided an ID.
 
 .. code:: javascript
 
     GET /{device_id}/events
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
@@ -966,14 +979,14 @@ Response:
 Retrieves event information by event ID
 ---------------------------------------
 
-Use the event ID details operation to get information about about a
-specific event including event type, status, message, and timestamp.
+Use the event ID details operation to get information about a specific
+event including event type, status, message, and timestamp.
 
 .. code:: javascript
 
     GET /{device_id}/events/{event_id}
 
-*Resource does not require a body*
+*This operation does not accept a request body.*
 
 Response:
 ^^^^^^^^^
